@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .success-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .success-card {
+            max-width: 600px;
+            width: 100%;
+            padding: 50px;
+        }
+
+        .check-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: rgba(15, 240, 252, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid var(--electric-blue);
+            box-shadow: 0 0 40px rgba(15, 240, 252, 0.4);
+            animation: pulse-glow 2s infinite;
+        }
+
+        .check-container i {
+            font-size: 4rem;
+            color: var(--electric-blue);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 20px rgba(15, 240, 252, 0.4);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 50px rgba(15, 240, 252, 0.8);
+                transform: scale(1.05);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(15, 240, 252, 0.4);
+                transform: scale(1);
+            }
+        }
+
+        .order-details-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--glass-border);
+            padding-bottom: 10px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+
+    <div class="container success-layout">
+        <div class="success-card glass-card">
+            <div class="check-container">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h1 class="heading-1">Payment <span class="text-gradient">Successful</span></h1>
+            <p style="color: var(--text-secondary); margin-top: 15px; font-size: 1.1rem;">Your transaction was verified
+                on the blockchain. Your drone is preparing for dispatch.</p>
+
+            <div class="order-details-box">
+                <div class="detail-row">
+                    <span style="color: var(--text-secondary);">Order Identifier:</span>
+                    <span style="color: #fff; font-family: monospace; font-weight: 700;">#ORD-9938XXV</span>
+                </div>
+                <div class="detail-row">
+                    <span style="color: var(--text-secondary);">Amount Paid:</span>
+                    <span style="color: var(--emerald-green); font-weight: 700;">$299.99</span>
+                </div>
+                <div class="detail-row">
+                    <span style="color: var(--text-secondary);">ETA:</span>
+                    <span style="color: #fff;">Within 3 Hours</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="order-details.html" class="btn btn-primary" style="flex: 1;">Track Order</a>
+                <a href="products.html" class="btn btn-secondary" style="flex: 1;">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

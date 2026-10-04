@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cart-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .cart-item-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .qty-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .summary-card {
+            padding: 30px;
+            position: sticky;
+            top: 120px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .total-row {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--emerald-green);
+        }
+
+        .coupon-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .coupon-input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html">Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container cart-layout">
+        <div>
+            <h2 class="heading-2" style="margin-bottom: 30px;">Your Cart (3 Items)</h2>
+            <div class="cart-items-container" id="cart-items">
+                <!-- Mock Cart Item 1 -->
+                <div class="cart-item">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80" alt="Headphones"
+                        class="cart-item-img">
+                    <div>
+                        <h3 class="heading-3" style="font-size: 1.3rem;">Quantum Wireless Headphones v3</h3>
+                        <p style="color: var(--text-secondary); margin-top: 5px;">Color: Neon Blue</p>
+                        <div class="qty-controls">
+                            <button class="qty-btn">-</button>
+                            <span>1</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div
+                            style="font-size: 1.5rem; font-weight: 700; color: var(--emerald-green); margin-bottom: 10px;">
+                            $299.99</div>
+                        <button
+                            style="background:none; border:none; color: var(--pink); cursor: pointer; text-decoration: underline;"><i
+                                class="fa-solid fa-trash"></i> Remove</button>
+                    </div>
+                </div>
+
+                <!-- Mock Cart Item 2 -->
+                <div class="cart-item">
+                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=800&q=80" alt="Sneakers"
+                        class="cart-item-img">
+                    <div>
+                        <h3 class="heading-3" style="font-size: 1.3rem;">Aero-Glide Sneakers</h3>
+                        <p style="color: var(--text-secondary); margin-top: 5px;">Size: 42</p>
+                        <div class="qty-controls">
+                            <button class="qty-btn">-</button>
+                            <span>2</span>
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div
+                            style="font-size: 1.5rem; font-weight: 700; color: var(--emerald-green); margin-bottom: 10px;">
+                            $439.98</div>
+                        <button
+                            style="background:none; border:none; color: var(--pink); cursor: pointer; text-decoration: underline;"><i
+                                class="fa-solid fa-trash"></i> Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="summary-card glass-card">
+                <h3 class="heading-3" style="margin-bottom: 25px;">Order Summary</h3>
+                <div class="summary-row">
+                    <span style="color: var(--text-secondary);">Subtotal</span>
+                    <span>$739.97</span>
+                </div>
+                <div class="summary-row">
+                    <span style="color: var(--text-secondary);">Shipping</span>
+                    <span style="color: var(--cyan);">Free</span>
+                </div>
+                <div class="summary-row">
+                    <span style="color: var(--text-secondary);">Tax (10%)</span>
+                    <span>$74.00</span>
+                </div>
+
+                <div class="coupon-box">
+                    <input type="text" class="coupon-input" placeholder="Promo code">
+                    <button class="btn btn-secondary" style="border-radius: 8px;">Apply</button>
+                </div>
+
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span>$813.97</span>
+                </div>
+                <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Proceed to
+                    Checkout</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">...</footer>
+</body>
+
+</html>

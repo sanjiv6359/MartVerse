@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products | Admin | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .admin-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .admin-link {
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .admin-link:hover,
+        .admin-link.active {
+            background: linear-gradient(90deg, rgba(15, 240, 252, 0.1), transparent);
+            color: var(--electric-blue);
+            border-left: 3px solid var(--electric-blue);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .data-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            vertical-align: middle;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            color: var(--electric-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar glass">
+            <h2 class="nav-logo text-gradient" style="text-align: center;">MARTVERSE</h2>
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+                <a href="manage-products.html" class="admin-link active"><i class="fa-solid fa-boxes-stacked"></i>
+                    Products</a>
+                <a href="manage-orders.html" class="admin-link"><i class="fa-solid fa-cart-flatbed"></i> Orders</a>
+                <a href="manage-users.html" class="admin-link"><i class="fa-solid fa-users"></i> Users</a>
+                <a href="analytics.html" class="admin-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h1 class="heading-2">Manage Products</h1>
+                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Product</button>
+            </div>
+
+            <div class="glass-card" style="padding: 0; overflow: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Inventory</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="display: flex; align-items: center; gap: 15px;">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100"
+                                    style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                                <div>
+                                    <div style="font-weight: 600;">Quantum Headphones</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">SKU: QH-001</div>
+                                </div>
+                            </td>
+                            <td>Electronics</td>
+                            <td>$299.99</td>
+                            <td>450 units</td>
+                            <td><span style="color: var(--emerald-green);"><i class="fa-solid fa-circle"></i>
+                                    Active</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="action-btn" style="color: var(--pink);"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="display: flex; align-items: center; gap: 15px;">
+                                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=100"
+                                    style="width: 50px; height: 50px; border-radius: 8px; object-fit: cover;">
+                                <div>
+                                    <div style="font-weight: 600;">Cyberpunk Jacket</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">SKU: CJ-445</div>
+                                </div>
+                            </td>
+                            <td>Fashion</td>
+                            <td>$189.99</td>
+                            <td style="color: var(--orange);">12 units (Low)</td>
+                            <td><span style="color: var(--emerald-green);"><i class="fa-solid fa-circle"></i>
+                                    Active</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="action-btn" style="color: var(--pink);"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

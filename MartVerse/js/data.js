@@ -1,0 +1,22 @@
+const products = [
+    { id: 1, name: "Quantum Wireless Headphones v3", price: 299.99, category: "Electronics", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3", rating: 4.8 },
+    { id: 2, name: "Neon Matrix Mechanical Keyboard", price: 149.99, category: "Electronics", image: "https://images.unsplash.com/photo-1595225476474-87563907a212?ixlib=rb-4.0.3", rating: 4.6 },
+    { id: 3, name: "Cyberpunk Glow Jacket", price: 189.99, category: "Fashion", image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3", rating: 4.9 },
+    { id: 4, name: "Neural Link Smartwatch", price: 399.99, category: "Electronics", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3", rating: 4.7 },
+    { id: 5, name: "Hover Desk (Zero Gravity)", price: 899.99, category: "Furniture", image: "https://images.unsplash.com/photo-1518455027359-f3f8164d1f56?ixlib=rb-4.0.3", rating: 4.5 },
+    { id: 6, name: "Intergalactic Coffee Beans", price: 29.99, category: "Grocery", image: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?ixlib=rb-4.0.3", rating: 4.8 },
+    { id: 7, name: "Holographic Display Monitor", price: 1299.99, category: "Electronics", image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3", rating: 4.9 },
+    { id: 8, name: "Aero-Glide Sneakers", price: 219.99, category: "Fashion", image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-4.0.3", rating: 4.4 },
+    { id: 9, name: "Plasma Core Gaming PC", price: 2499.99, category: "Electronics", image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?ixlib=rb-4.0.3", rating: 5.0 },
+    { id: 10, name: "Zero-G Ergonomic Chair", price: 449.99, category: "Furniture", image: "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?ixlib=rb-4.0.3", rating: 4.6 },
+    { id: 11, name: "Synthetic Bio-Serum", price: 89.99, category: "Beauty", image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?ixlib=rb-4.0.3", rating: 4.7 },
+    { id: 12, name: "Anti-Gravity Yoga Mat", price: 69.99, category: "Sports", image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?ixlib=rb-4.0.3", rating: 4.5 },
+    { id: 13, name: "Hyper-Drive SSD 4TB", price: 349.99, category: "Electronics", image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?ixlib=rb-4.0.3", rating: 4.9 },
+    { id: 14, name: "Quantum Physics for Beginners", price: 39.99, category: "Books", image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3", rating: 4.8 },
+    { id: 15, name: "Neon LED Wall Panels", price: 129.99, category: "Home & Kitchen", image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?ixlib=rb-4.0.3", rating: 4.4 },
+    { id: 16, name: "Auto-Tuning Smart Guitar", price: 599.99, category: "Electronics", image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3", rating: 4.7 },
+    { id: 17, name: "Bio-Luminescent Plant", price: 79.99, category: "Home & Kitchen", image: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?ixlib=rb-4.0.3", rating: 4.5 },
+    { id: 18, name: "Chromium Sunglasses", price: 159.99, category: "Fashion", image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3", rating: 4.6 },
+    { id: 19, name: "Robotic Pet Companion", price: 899.99, category: "Toys", image: "https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3", rating: 4.8 },
+    { id: 20, name: "Warp-Speed E-Bike", price: 1899.99, category: "Sports", image: "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-4.0.3", rating: 4.9 }
+];

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <style>
+        .auth-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2564&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .auth-layout::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.85);
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .otp-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 60px;
+            font-size: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            font-family: var(--font-main);
+        }
+
+        .otp-input:focus {
+            outline: none;
+            border-color: var(--emerald-green);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-layout">
+        <div class="auth-card glass-card">
+            <h2 class="heading-2">Verify OTP</h2>
+            <p style="color: var(--text-secondary); margin: 15px 0;">We've sent a 4-digit code to your data stream.</p>
+
+            <form action="reset-password.html">
+                <div class="otp-container">
+                    <input type="text" maxlength="1" class="otp-input" required>
+                    <input type="text" maxlength="1" class="otp-input" required>
+                    <input type="text" maxlength="1" class="otp-input" required>
+                    <input type="text" maxlength="1" class="otp-input" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; border-radius: 12px; padding: 15px; background: linear-gradient(45deg, var(--emerald-green), var(--cyan)); color: #000;">Verify
+                    Identity</button>
+            </form>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-secondary);">Didn't receive it? <a href="#"
+                    style="color: var(--cyan);">Resend Code</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

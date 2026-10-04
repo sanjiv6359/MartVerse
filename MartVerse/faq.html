@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faq-header {
+            margin: 120px 0 60px;
+            text-align: center;
+        }
+
+        .faq-item {
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background: rgba(20, 20, 30, 0.4);
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--electric-blue);
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            color: var(--electric-blue);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            color: var(--text-secondary);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html">Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="faq-header">
+            <h1 class="heading-1">Knowledge <span class="text-gradient">Base</span></h1>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto 80px;">
+            <div class="faq-item">
+                <div class="faq-question">How fast is delivery? <i class="fa-solid fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer">Through our advanced drone network, most inner-city orders are delivered within
+                    45 minutes of check out.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you accept cryptocurrency? <i
+                        class="fa-solid fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer">Yes, we accept Bitcoin, Ethereum, and our native MartCoin for seamless galactic
+                    transactions.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is your return policy? <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">Items can be recalled via drone within 30 solar cycles (days) for a full refund.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How does the holographic preview work? <i
+                        class="fa-solid fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer">You will need an AR kit setup on your local device. Once connected, click the
+                    "View AR" badge next to supported products.</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

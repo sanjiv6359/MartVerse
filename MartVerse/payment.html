@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .payment-layout {
+            max-width: 800px;
+            margin: 120px auto 80px;
+        }
+
+        .payment-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .pay-tab {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        .pay-tab.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px rgba(15, 240, 252, 0.2);
+        }
+
+        .card-preview {
+            width: 100%;
+            height: 220px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--neon-purple), var(--pink));
+            padding: 30px;
+            position: relative;
+            color: #fff;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(180, 0, 255, 0.4);
+            overflow: hidden;
+        }
+
+        .card-preview::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            top: -50px;
+            right: -50px;
+        }
+
+        .card-chip {
+            width: 50px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .card-number {
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            font-family: monospace;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            text-transform: uppercase;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+
+    <main class="container payment-layout">
+        <h1 class="heading-2" style="text-align: center; margin-bottom: 40px;">Select Payment Method</h1>
+
+        <div class="payment-tabs">
+            <div class="pay-tab active"><i class="fa-regular fa-credit-card"></i> Credit Card</div>
+            <div class="pay-tab"><i class="fa-brands fa-paypal"></i> PayPal / Wallet</div>
+            <div class="pay-tab"><i class="fa-solid fa-qrcode"></i> UPI Scan</div>
+            <div class="pay-tab"><i class="fa-solid fa-building-columns"></i> Net Banking</div>
+        </div>
+
+        <div class="glass-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div class="card-preview">
+                <div class="card-chip"></div>
+                <div class="card-number" id="preview-num">•••• •••• •••• ••••</div>
+                <div class="card-details">
+                    <div id="preview-name">CARDHOLDER NAME</div>
+                    <div id="preview-exp">MM/YY</div>
+                </div>
+            </div>
+
+            <div>
+                <form action="order-success.html"
+                    onsubmit="event.preventDefault(); window.location.href='order-success.html';">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000" id="card-num"
+                            oninput="document.getElementById('preview-num').innerText = this.value || '•••• •••• •••• ••••';">
+                    </div>
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" class="form-control" placeholder="JOHN DOE"
+                            oninput="document.getElementById('preview-name').innerText = this.value.toUpperCase() || 'CARDHOLDER NAME';">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" class="form-control" placeholder="MM/YY"
+                                oninput="document.getElementById('preview-exp').innerText = this.value || 'MM/YY';">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV / CVC</label>
+                            <input type="text" class="form-control" placeholder="123">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"
+                        style="width: 100%; margin-top: 10px; font-size: 1.1rem; padding: 16px;">Pay $299.99
+                        Securely</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

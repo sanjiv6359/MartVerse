@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .admin-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .admin-link {
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .admin-link:hover,
+        .admin-link.active {
+            background: linear-gradient(90deg, rgba(15, 240, 252, 0.1), transparent);
+            color: var(--electric-blue);
+            border-left: 3px solid var(--electric-blue);
+        }
+
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-icon {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            font-size: 2.5rem;
+            opacity: 0.1;
+            color: var(--electric-blue);
+        }
+
+        .chart-container {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar glass">
+            <h2 class="nav-logo text-gradient" style="text-align: center;">MARTVERSE<br><span
+                    style="font-size:0.9rem; color:var(--text-secondary); font-weight:400; letter-spacing:3px;">SYSTEM
+                    COMMAND</span></h2>
+
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-link active"><i class="fa-solid fa-gauge-high"></i>
+                    Dashboard</a>
+                <a href="manage-products.html" class="admin-link"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
+                <a href="manage-orders.html" class="admin-link"><i class="fa-solid fa-cart-flatbed"></i> Orders</a>
+                <a href="manage-users.html" class="admin-link"><i class="fa-solid fa-users"></i> Users</a>
+                <a href="analytics.html" class="admin-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="index.html" class="admin-link" style="margin-top: 50px; color: var(--text-muted);"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i> Exit Node</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h1 class="heading-2">Sector Overview</h1>
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div style="position: relative;">
+                        <input type="text" placeholder="Global search..."
+                            style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); padding: 10px 20px; border-radius: 20px; color: #fff; width: 250px;">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100"
+                        style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--pink);">
+                </div>
+            </div>
+
+            <div class="stat-cards">
+                <div class="stat-card">
+                    <i class="fa-solid fa-cart-shopping stat-icon"></i>
+                    <p style="color: var(--text-secondary); margin-bottom: 10px;">Total Orders</p>
+                    <h3 style="font-size: 2.2rem; color: #fff;">18,492</h3>
+                    <p style="color: var(--emerald-green); font-size: 0.85rem; margin-top: 10px;"><i
+                            class="fa-solid fa-arrow-trend-up"></i> +12.5%</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-wallet stat-icon" style="color: var(--emerald-green);"></i>
+                    <p style="color: var(--text-secondary); margin-bottom: 10px;">Gross Revenue</p>
+                    <h3 style="font-size: 2.2rem; color: #fff;">$4.2M</h3>
+                    <p style="color: var(--emerald-green); font-size: 0.85rem; margin-top: 10px;"><i
+                            class="fa-solid fa-arrow-trend-up"></i> +8.2%</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-users stat-icon" style="color: var(--orange);"></i>
+                    <p style="color: var(--text-secondary); margin-bottom: 10px;">Active Users</p>
+                    <h3 style="font-size: 2.2rem; color: #fff;">9,204</h3>
+                    <p style="color: var(--emerald-green); font-size: 0.85rem; margin-top: 10px;"><i
+                            class="fa-solid fa-arrow-trend-up"></i> +2.4%</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-box-open stat-icon" style="color: var(--pink);"></i>
+                    <p style="color: var(--text-secondary); margin-bottom: 10px;">Total Products</p>
+                    <h3 style="font-size: 2.2rem; color: #fff;">1,430</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 10px;">Across 12 sectors</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="heading-3" style="margin-bottom: 25px;">Revenue Matrix</h3>
+                <canvas id="revenueChart" width="800" height="300"
+                    style="width: 100%; max-height: 300px; display: block;"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vanilla JS Chart Implementation -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.getElementById('revenueChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            // Fix resolution issues
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio;
+            canvas.height = rect.height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const w = rect.width;
+            const h = rect.height;
+            const padding = 40;
+
+            const data = [120, 150, 180, 140, 210, 250, 300];
+            const labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+            const maxVal = Math.max(...data);
+
+            // Draw grid
+            ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 5; i++) {
+                let y = padding + (i * ((h - padding * 2) / 4));
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(w - padding, y);
+                ctx.stroke();
+            }
+
+            // Draw Line
+            ctx.beginPath();
+            ctx.strokeStyle = '#0ff0fc';
+            ctx.lineWidth = 4;
+
+            let points = [];
+
+            for (let i = 0; i < data.length; i++) {
+                const x = padding + (i * ((w - padding * 2) / (data.length - 1)));
+                const y = (h - padding) - ((data[i] / maxVal) * (h - padding * 2));
+                points.push({ x, y });
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Draw gradient under line
+            ctx.lineTo(points[points.length - 1].x, h - padding);
+            ctx.lineTo(points[0].x, h - padding);
+            ctx.closePath();
+
+            let gradient = ctx.createLinearGradient(0, padding, 0, h - padding);
+            gradient.addColorStop(0, 'rgba(15, 240, 252, 0.4)');
+            gradient.addColorStop(1, 'rgba(15, 240, 252, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Draw points
+            points.forEach((p, i) => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = '#0a0a0f';
+                ctx.fill();
+                ctx.strokeStyle = '#0ff0fc';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // labels
+                ctx.fillStyle = '#a0a0b0';
+                ctx.font = "12px sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText(labels[i], p.x, h - padding + 20);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .dash-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dash-link {
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .dash-link:hover,
+        .dash-link.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .orders-tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
+        }
+
+        .tab {
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding-bottom: 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--electric-blue);
+            border-color: var(--electric-blue);
+            font-weight: 600;
+        }
+
+        .order-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed var(--glass-border);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .order-id {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-badge.delivered {
+            background: rgba(0, 255, 115, 0.1);
+            color: var(--emerald-green);
+            border: 1px solid var(--emerald-green);
+        }
+
+        .status-badge.transit {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+            border: 1px solid var(--electric-blue);
+        }
+
+        .status-badge.cancelled {
+            background: rgba(255, 0, 200, 0.1);
+            color: var(--pink);
+            border: 1px solid var(--pink);
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .item-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+
+    <main class="container dashboard-layout">
+        <aside class="dashboard-sidebar glass-card">
+            <nav class="dash-nav">
+                <a href="dashboard.html" class="dash-link"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="orders.html" class="dash-link active"><i class="fa-solid fa-box"></i> My Orders</a>
+                <a href="wishlist.html" class="dash-link"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                <a href="profile.html" class="dash-link"><i class="fa-solid fa-user"></i> My Profile</a>
+            </nav>
+        </aside>
+
+        <div>
+            <h2 class="heading-2" style="margin-bottom: 30px;">Order History</h2>
+
+            <div class="orders-tabs">
+                <div class="tab active">All Orders</div>
+                <div class="tab">In Transit</div>
+                <div class="tab">Delivered</div>
+                <div class="tab">Cancelled</div>
+            </div>
+
+            <!-- Order 1 in Transit -->
+            <div class="order-card">
+                <div class="order-header">
+                    <div>
+                        <div class="order-id">Order #ORD-9938XXV</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Placed on Oct 24,
+                            2126</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="status-badge transit">In Transit</div>
+                        <div style="color: #fff; font-weight: 700; margin-top: 5px;">$299.99</div>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200" alt="Headphones"
+                            class="item-img">
+                        <div>
+                            <div style="color: #fff; font-weight: 600;">Quantum Wireless Headphones v3</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Qty: 1</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: flex-end;">
+                    <a href="order-details.html" class="btn btn-primary"
+                        style="padding: 10px 20px; font-size: 0.9rem;">Track Package</a>
+                </div>
+            </div>
+
+            <!-- Order 2 Delivered -->
+            <div class="order-card">
+                <div class="order-header">
+                    <div>
+                        <div class="order-id">Order #ORD-8821AB</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Placed on Oct 15,
+                            2126</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="status-badge delivered">Delivered</div>
+                        <div style="color: #fff; font-weight: 700; margin-top: 5px;">$89.99</div>
+                    </div>
+                </div>
+                <div class="item-list">
+                    <div class="item-row">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bf85033e5a?w=200" alt="Serum"
+                            class="item-img">
+                        <div>
+                            <div style="color: #fff; font-weight: 600;">Synthetic Bio-Serum</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Qty: 1</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: flex-end;">
+                    <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;"><i
+                            class="fa-solid fa-file-invoice"></i> Invoice</button>
+                    <button class="btn btn-secondary"
+                        style="padding: 10px 20px; font-size: 0.9rem; border-color: var(--electric-blue);"><i
+                            class="fa-solid fa-rotate-left"></i> Reorder</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

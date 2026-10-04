@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-section {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .product-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery {
+            position: relative;
+        }
+
+        .main-img-container {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            cursor: zoom-in;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 0 30px rgba(15, 240, 252, 0.1);
+        }
+
+        .main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 15px;
+        }
+
+        .thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            overflow: hidden;
+        }
+
+        .thumb.active {
+            border-color: var(--electric-blue);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--emerald-green);
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .specs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .specs-list li {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .specs-list li span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .btn-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Shared Navbar -->
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html">Store</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="nav-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="wishlist.html" class="nav-icon"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <a href="login.html" class="nav-icon"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="product-section" id="product-display">
+            <!-- Populated via JS based on URL params -->
+            <div class="gallery">
+                <div class="main-img-container glass-card">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        class="main-img" id="main-img" alt="Product">
+                </div>
+                <div class="thumbnails">
+                    <div class="thumb active"><img
+                            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                            alt="thumb"></div>
+                    <!-- More thumbs -->
+                </div>
+            </div>
+
+            <div class="details-content">
+                <h1 id="prod-name">Quantum Wireless Headphones v3</h1>
+                <div class="rating" style="color: var(--orange); margin-bottom: 20px;"><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span
+                        style="color: var(--text-secondary);">(128 Reviews)</span></div>
+
+                <div class="price-row">
+                    <span class="current-price" id="prod-price">$299.99</span>
+                    <span class="original-price" id="prod-orig-price">$399.99</span>
+                    <span class="discount-badge" style="position: static; font-size:1rem; padding: 5px 12px;">Save
+                        25%</span>
+                </div>
+
+                <p class="description" id="prod-desc">
+                    Immerse yourself in the ultimate sonic universe with the Quantum Wireless Headphones. Featuring
+                    next-generation active noise cancellation and a staggering 60-hour block-chain backed battery life.
+                </p>
+
+                <h3 style="margin-bottom: 15px; color: var(--electric-blue);">Specifications</h3>
+                <ul class="specs-list">
+                    <li><span>Brand</span> <span>NeonAudio</span></li>
+                    <li><span>Connectivity</span> <span>Bluetooth 5.3 + Warp Space</span></li>
+                    <li><span>Weight</span> <span>250g</span></li>
+                    <li><span>Warranty</span> <span>2 Years Intergalactic</span></li>
+                </ul>
+
+                <div class="actions">
+                    <button class="btn btn-primary btn-large"
+                        onclick="addToCart({id: 1, name: 'Quantum Wireless Headphones v3', price: 299.99, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3'})">Add
+                        to Cart</button>
+                    <button class="btn btn-secondary btn-icon" title="Add to Wishlist"><i
+                            class="fa-regular fa-heart"></i></button>
+                    <button class="btn btn-secondary btn-icon" title="Share"
+                        style="border-color: var(--pink); color: var(--pink);"><i
+                            class="fa-solid fa-share-nodes"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related products section -->
+        <section style="margin-top: 80px; margin-bottom: 50px;">
+            <h2 class="heading-2" style="margin-bottom: 30px;">Similar Products</h2>
+            <div class="products-grid" id="related-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px;">
+                <!-- Will populate via JS later or manually for mock -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 MartVerse. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Simple zoom effect for product details
+        const mainImgCont = document.querySelector('.main-img-container');
+        const mainImg = document.getElementById('main-img');
+
+        mainImgCont.addEventListener('mousemove', (e) => {
+            const rect = mainImgCont.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            mainImg.style.transformOrigin = `${x}px ${y}px`;
+            mainImg.style.transform = 'scale(2)';
+        });
+
+        mainImgCont.addEventListener('mouseleave', () => {
+            mainImg.style.transformOrigin = 'center center';
+            mainImg.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+
+</html>

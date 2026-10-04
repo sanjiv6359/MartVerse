@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        /* Sidebar styles same as profile.html */
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .dash-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dash-link {
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .dash-link:hover,
+        .dash-link.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
+        .avatar-edit {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .avatar-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--cyan);
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+
+    <main class="container dashboard-layout">
+        <aside class="dashboard-sidebar glass-card">
+            <nav class="dash-nav">
+                <a href="dashboard.html" class="dash-link"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="profile.html" class="dash-link active"><i class="fa-solid fa-user"></i> My Profile</a>
+            </nav>
+        </aside>
+
+        <div class="glass-card" style="padding: 40px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 class="heading-2">Edit Profile</h2>
+            </div>
+
+            <form action="profile.html">
+                <div class="avatar-edit">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80"
+                        alt="User" class="avatar-preview">
+                    <div>
+                        <div class="btn btn-secondary" style="margin-bottom: 10px;">Upload New Photo</div>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem;">Max file size: 5MB. Formats: JPG,
+                            PNG, WEBP.</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" value="Nova Pioneer #42">
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" class="form-control" value="2120-10-24">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" value="nova.pioneer@cyberearth.net">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" value="+1 (800) 555-NOVA">
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; display: flex; gap: 15px;">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a href="profile.html" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

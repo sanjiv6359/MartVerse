@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .dash-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dash-link {
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .dash-link:hover,
+        .dash-link.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .wishlist-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-img-wrapper {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: var(--pink);
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .card-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--emerald-green);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links" style="margin-left: auto;">
+                <li><a href="cart.html" class="nav-icon"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container dashboard-layout">
+        <aside class="dashboard-sidebar glass-card">
+            <nav class="dash-nav">
+                <a href="dashboard.html" class="dash-link"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="orders.html" class="dash-link"><i class="fa-solid fa-box"></i> My Orders</a>
+                <a href="wishlist.html" class="dash-link active"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                <a href="profile.html" class="dash-link"><i class="fa-solid fa-user"></i> My Profile</a>
+            </nav>
+        </aside>
+
+        <div>
+            <h2 class="heading-2" style="margin-bottom: 30px;">My Wishlist</h2>
+            <div class="wishlist-grid">
+                <!-- Mock Wishlist Item 1 -->
+                <div class="wishlist-card">
+                    <div class="card-img-wrapper">
+                        <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="Watch"
+                            class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3 class="card-title">Neural Link Smartwatch</h3>
+                            <div class="card-price">$399.99</div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; border-radius: 8px;">Move to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Mock Wishlist Item 2 -->
+                <div class="wishlist-card">
+                    <div class="card-img-wrapper">
+                        <button class="remove-btn"><i class="fa-solid fa-xmark"></i></button>
+                        <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?w=500&q=80" alt="Robot"
+                            class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3 class="card-title">Robotic Pet Companion</h3>
+                            <div class="card-price">$899.99</div>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; border-radius: 8px;">Move to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

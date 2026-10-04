@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .store-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            margin-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .store-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            padding: 24px;
+        }
+
+        .filter-group {
+            margin-bottom: 24px;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--cyan);
+        }
+
+        .filter-list li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .filter-list li:hover {
+            color: var(--electric-blue);
+        }
+
+        .store-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-panel);
+            color: #fff;
+            margin-bottom: 20px;
+            font-family: var(--font-main);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 10px rgba(15, 240, 252, 0.2);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--pink);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--emerald-green);
+            margin-bottom: 15px;
+        }
+
+        .rating {
+            color: var(--orange);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Shared Navbar -->
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html" style="color: var(--electric-blue);">Store</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="nav-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="wishlist.html" class="nav-icon"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <a href="login.html" class="nav-icon"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container store-layout">
+        <aside class="sidebar glass-card">
+            <input type="text" id="search-input" class="search-bar" placeholder="Search products...">
+
+            <div class="filter-group">
+                <h4 class="filter-title">Categories</h4>
+                <ul class="filter-list" id="category-filters">
+                    <li data-category="all" style="color: var(--electric-blue);">All Categories</li>
+                    <li data-category="Electronics">Electronics</li>
+                    <li data-category="Fashion">Fashion</li>
+                    <li data-category="Home & Kitchen">Home & Kitchen</li>
+                    <li data-category="Books">Books</li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h4 class="filter-title">Price Range</h4>
+                <input type="range" id="price-range" min="0" max="2000" value="2000" style="width: 100%;">
+                <div class="flex justify-between"
+                    style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">
+                    <span>$0</span>
+                    <span id="price-display">$2000</span>
+                </div>
+            </div>
+        </aside>
+
+        <section>
+            <div class="store-header">
+                <div>
+                    <h2 class="heading-2">Our Products</h2>
+                    <p style="color: var(--text-secondary);" id="results-count">Showing results</p>
+                </div>
+                <div>
+                    <select id="sort-select"
+                        style="padding: 10px; border-radius: 8px; background: var(--bg-panel); color: white; border: 1px solid var(--glass-border);">
+                        <option value="popular">Popular</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Products dynamically injected here via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 MartVerse. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/store.js"></script>
+</body>
+
+</html>

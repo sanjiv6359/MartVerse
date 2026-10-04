@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .progress-bar-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .progress-bar-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--glass-border);
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-panel);
+            border: 2px solid var(--glass-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .progress-step.active {
+            background: var(--electric-blue);
+            color: #000;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px rgba(15, 240, 252, 0.5);
+        }
+
+        .step-label {
+            position: absolute;
+            top: 50px;
+            width: max-content;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-step.active .step-label {
+            color: var(--electric-blue);
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+        }
+
+        .checkout-section {
+            background: var(--bg-panel);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 30px;
+        }
+
+        .delivery-method,
+        .payment-shortcut {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .delivery-method:hover,
+        .payment-shortcut:hover,
+        .delivery-method.selected {
+            border-color: var(--electric-blue);
+            background: rgba(15, 240, 252, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+
+    <main class="container checkout-layout">
+        <div>
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+                <div class="progress-step active">1<span class="step-label">Shipping</span></div>
+                <div class="progress-step">2<span class="step-label">Delivery</span></div>
+                <div class="progress-step">3<span class="step-label">Payment</span></div>
+                <div class="progress-step">4<span class="step-label">Review</span></div>
+            </div>
+
+            <!-- Step 1 Form -->
+            <div class="checkout-section">
+                <h3 class="heading-3" style="margin-bottom: 25px;"><i
+                        class="fa-solid fa-location-dot text-gradient"></i> Shipping Address</h3>
+                <form class="form-grid">
+                    <input type="text" class="form-control" placeholder="First Name">
+                    <input type="text" class="form-control" placeholder="Last Name">
+                    <input type="text" class="form-control" placeholder="Address Line 1" style="grid-column: 1/-1;">
+                    <input type="text" class="form-control" placeholder="Apartment, suite, etc. (optional)"
+                        style="grid-column: 1/-1;">
+                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" class="form-control" placeholder="State/Province">
+                    <input type="text" class="form-control" placeholder="Zip/Postal Code">
+                    <select class="form-control" style="appearance: none;">
+                        <option>United States</option>
+                        <option>Cyber Earth</option>
+                        <option>Mars Colony</option>
+                    </select>
+                </form>
+            </div>
+
+            <div class="checkout-section">
+                <h3 class="heading-3" style="margin-bottom: 25px;"><i class="fa-solid fa-truck-fast"
+                        style="color: var(--orange);"></i> Delivery Method</h3>
+                <div class="delivery-method selected">
+                    <input type="radio" name="delivery" checked
+                        style="accent-color: var(--electric-blue); transform: scale(1.5);">
+                    <div style="flex:1;">
+                        <div style="font-weight: 700; font-size: 1.1rem; color: #fff;">Quantum Drone (Standard)</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Delivery in 2-3
+                            hours</div>
+                    </div>
+                    <div style="font-weight: 700;">Free</div>
+                </div>
+                <div class="delivery-method">
+                    <input type="radio" name="delivery"
+                        style="accent-color: var(--electric-blue); transform: scale(1.5);">
+                    <div style="flex:1;">
+                        <div style="font-weight: 700; font-size: 1.1rem; color: #fff;">Warp Speed (Express)</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Delivery in < 30
+                                mins</div>
+                        </div>
+                        <div style="font-weight: 700; color: var(--electric-blue);">+$20.00</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end;">
+                    <a href="payment.html" class="btn btn-primary">Proceed to Payment</a>
+                </div>
+            </div>
+
+            <div>
+                <!-- Order Summary Sidebar -->
+                <div class="glass-card" style="position: sticky; top: 120px;">
+                    <h3 class="heading-3" style="margin-bottom: 20px;">Order Summary</h3>
+                    <!-- mock items -->
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200"
+                            style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                        <div>
+                            <div style="font-size: 0.95rem;">Headphones v3</div>
+                            <div style="color: var(--text-secondary); font-size: 0.85rem;">Qty: 1</div>
+                            <div style="color: var(--emerald-green); font-weight: 700;">$299.99</div>
+                        </div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
+
+                    <div
+                        style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--text-secondary);">
+                        <span>Subtotal</span><span>$299.99</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--text-secondary);">
+                        <span>Shipping</span><span>Free</span>
+                    </div>
+
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 20px; font-size: 1.3rem; font-weight: 700; color: #fff;">
+                        <span>Total</span><span style="color: var(--electric-blue);">$299.99</span>
+                    </div>
+                </div>
+            </div>
+    </main>
+</body>
+
+</html>

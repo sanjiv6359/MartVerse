@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            font-family: var(--font-main);
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px rgba(15, 240, 252, 0.2);
+        }
+
+        .contact-info li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--cyan);
+            font-size: 1.2rem;
+            border: 1px solid var(--glass-border);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html">Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container contact-layout">
+        <div class="glass-card">
+            <h2 class="heading-2" style="margin-bottom: 10px;">Get in Touch</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Transmit a message to our headquarters. We
+                will sync back shortly.</p>
+
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Identification Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Transmission Address (Email)</label>
+                    <input type="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Message Vector</label>
+                    <textarea class="form-control" rows="5" placeholder="How can we assist your journey?"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Transmit Message</button>
+            </form>
+        </div>
+
+        <div>
+            <h2 class="heading-2" style="margin-bottom: 30px;">Headquarters</h2>
+            <ul class="contact-info">
+                <li>
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Physical Hub</h4>
+                        <span style="color: var(--text-secondary);">Sector 4, Neon City, Cyber Earth 2145</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Data Stream</h4>
+                        <span style="color: var(--text-secondary);">support@martverse.com</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Voice Comm</h4>
+                        <span style="color: var(--text-secondary);">+1 (800) 555-CYBER</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>

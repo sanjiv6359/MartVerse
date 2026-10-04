@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .dash-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dash-link {
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .dash-link:hover,
+        .dash-link.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            margin-top: 30px;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--glass-border);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -30px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg-panel);
+            border: 2px solid var(--electric-blue);
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 10px var(--electric-blue);
+        }
+
+        .timeline-item.completed .timeline-dot {
+            background: var(--electric-blue);
+        }
+
+        .timeline-item.pending .timeline-dot {
+            border-color: var(--glass-border);
+            box-shadow: none;
+        }
+
+        .timeline-content h4 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+    <main class="container dashboard-layout">
+        <aside class="dashboard-sidebar glass-card">
+            <nav class="dash-nav">
+                <a href="dashboard.html" class="dash-link"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="orders.html" class="dash-link active"><i class="fa-solid fa-box"></i> My Orders</a>
+                <a href="wishlist.html" class="dash-link"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                <a href="profile.html" class="dash-link"><i class="fa-solid fa-user"></i> My Profile</a>
+            </nav>
+        </aside>
+        <div>
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+                <a href="orders.html" style="color: var(--text-secondary); font-size: 1.5rem;"><i
+                        class="fa-solid fa-arrow-left"></i></a>
+                <h2 class="heading-2">Order #ORD-9938XXV</h2>
+            </div>
+
+            <div class="glass-card" style="padding: 30px; margin-bottom: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 class="heading-3">Tracking Information</h3>
+                    <div
+                        style="padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: rgba(15, 240, 252, 0.1); color: var(--electric-blue); border: 1px solid var(--electric-blue);">
+                        In Transit</div>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Order Placed</h4>
+                            <p>Oct 24, 2126 - 10:45 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Processed & Packed</h4>
+                            <p>Oct 24, 2126 - 11:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item completed">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Dispatched via Quantum Drone</h4>
+                            <p>Oct 24, 2126 - 12:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item pending">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4 style="color: var(--text-secondary);">Out for Delivery</h4>
+                            <p>Estimated arrival in 35 mins</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-grid">
+                <div class="glass-card" style="padding: 25px;">
+                    <h4
+                        style="color: var(--cyan); margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        Shipping Details</h4>
+                    <p style="color: #fff; font-weight: 600;">Nova Pioneer #42</p>
+                    <p style="color: var(--text-secondary); margin-top: 5px; line-height: 1.6;">
+                        124 Neon Street, Apt 503<br>
+                        Cyber Earth Sector 9, 88390<br>
+                        +1 (800) 555-NOVA
+                    </p>
+                </div>
+                <div class="glass-card" style="padding: 25px;">
+                    <h4
+                        style="color: var(--orange); margin-bottom: 15px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+                        Payment Details</h4>
+                    <p style="color: #fff; font-weight: 600;">Neural Wallet <i class="fa-solid fa-circle-check"
+                            style="color: var(--emerald-green);"></i></p>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 15px; color: var(--text-secondary);">
+                        <span>Subtotal</span><span>$299.99</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 5px; color: var(--text-secondary);">
+                        <span>Shipping</span><span>Free</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; margin-top: 15px; font-weight: 700; color: #fff; font-size: 1.1rem;">
+                        <span>Total Paid</span><span style="color: var(--electric-blue);">$299.99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

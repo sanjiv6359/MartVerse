@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addresses | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .dash-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dash-link {
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .dash-link:hover,
+        .dash-link.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .addresses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .address-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .address-card.default {
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px rgba(15, 240, 252, 0.2);
+        }
+
+        .add-new {
+            border: 1px dashed var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 200px;
+            color: var(--text-secondary);
+        }
+
+        .add-new:hover {
+            border-color: var(--electric-blue);
+            color: var(--electric-blue);
+            background: rgba(15, 240, 252, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+    <main class="container dashboard-layout">
+        <aside class="dashboard-sidebar glass-card">
+            <nav class="dash-nav">
+                <a href="dashboard.html" class="dash-link"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="orders.html" class="dash-link"><i class="fa-solid fa-box"></i> My Orders</a>
+                <a href="profile.html" class="dash-link"><i class="fa-solid fa-user"></i> My Profile</a>
+                <a href="addresses.html" class="dash-link active"><i class="fa-solid fa-location-dot"></i> Addresses</a>
+            </nav>
+        </aside>
+        <div>
+            <h2 class="heading-2" style="margin-bottom: 30px;">Saved Addresses</h2>
+            <div class="addresses-grid">
+                <!-- Default -->
+                <div class="address-card default">
+                    <div>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h4 style="color: #fff;"><i class="fa-solid fa-house"></i> Home Target</h4>
+                            <span class="discount-badge"
+                                style="position: static; font-size: 0.7rem; background: var(--neon-purple);">Default</span>
+                        </div>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            <b>Nova Pioneer #42</b><br>
+                            124 Neon Street, Apt 503<br>
+                            Cyber Earth Sector 9<br>
+                            Zip/Postal: 88390
+                        </p>
+                    </div>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <button class="btn btn-secondary"
+                            style="padding: 8px 15px; font-size: 0.85rem; flex: 1;">Edit</button>
+                    </div>
+                </div>
+
+                <!-- Add New -->
+                <div class="address-card add-new">
+                    <i class="fa-solid fa-plus" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                    <h4 style="font-size: 1.1rem;">Add New Coordinates</h4>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

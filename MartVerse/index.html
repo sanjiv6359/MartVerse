@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MartVerse - The Futuristic E-Commerce Universe</title>
+    <meta name="description" content="Shop in the most advanced futuristic e-commerce universe.">
+    <link rel="stylesheet" href="css/globals.css">
+    <!-- Using Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific overrides for index page */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-visual img {
+            max-width: 90%;
+            filter: drop-shadow(0 0 30px rgba(15, 240, 252, 0.4));
+        }
+        
+        /* Particle Background Mock */
+        .particles {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.03;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -5px; right: -10px;
+            background: var(--pink);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: none;
+        }
+        .nav-icon {
+            position: relative;
+            color: var(--text-primary);
+        }
+        .nav-icon:hover {
+            color: var(--cyan);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Shared Navbar -->
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html">Store</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="nav-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="wishlist.html" class="nav-icon"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="nav-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </a>
+                <a href="login.html" class="nav-icon"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="particles"></div>
+        <div class="container flex align-center justify-between">
+            <div class="hero-content flex-column gap-3">
+                <h1 class="heading-1">Step Into The <br><span class="text-gradient">Future</span> of Shopping</h1>
+                <p class="heading-3" style="font-weight: 300; color: var(--text-secondary); max-width: 500px;">
+                    Experience the ultimate 3D universe with premium products, neon aesthetics, and seamless checkouts.
+                </p>
+                <div class="flex gap-2" style="margin-top: 10px;">
+                    <a href="products.html" class="btn btn-primary">Shop Now</a>
+                    <a href="categories.html" class="btn btn-secondary">Explore Categories</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Using a placeholder for 3D cart/product -->
+                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Futuristic Product" class="floating" style="border-radius: 20px; object-fit: cover; aspect-ratio: 1/1;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="nav-logo text-gradient" style="margin-bottom: 20px;">MartVerse</div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">The future of luxury e-commerce. Fast, immersive, and spectacular.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="deals.html">Flash Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 MartVerse. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            margin: 120px 0 80px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .dash-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .dash-link {
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .dash-link:hover,
+        .dash-link.active {
+            background: rgba(15, 240, 252, 0.1);
+            color: var(--electric-blue);
+        }
+
+        .notif-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .notif-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .notif-item.unread {
+            border-left: 4px solid var(--electric-blue);
+            background: rgba(15, 240, 252, 0.05);
+        }
+
+        .notif-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+        </div>
+    </nav>
+    <main class="container dashboard-layout">
+        <aside class="dashboard-sidebar glass-card">
+            <nav class="dash-nav">
+                <a href="dashboard.html" class="dash-link"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="orders.html" class="dash-link"><i class="fa-solid fa-box"></i> My Orders</a>
+                <a href="profile.html" class="dash-link"><i class="fa-solid fa-user"></i> My Profile</a>
+                <a href="notifications.html" class="dash-link active"><i class="fa-solid fa-bell"></i> Notifications</a>
+            </nav>
+        </aside>
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2 class="heading-2">Notifications</h2>
+                <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 0.85rem;">Mark all as
+                    read</button>
+            </div>
+            <div class="notif-list">
+                <div class="notif-item unread">
+                    <div class="notif-icon" style="background: rgba(15, 240, 252, 0.2); color: var(--electric-blue);"><i
+                            class="fa-solid fa-truck-fast"></i></div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Order Dispatched</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Your drone is on the way with order
+                            #ORD-9938XXV.</p>
+                        <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 10px;">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div class="notif-icon" style="background: rgba(180, 0, 255, 0.2); color: var(--neon-purple);"><i
+                            class="fa-solid fa-tag"></i></div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Flash Sale Alert</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">Holographic Display Monitors are
+                            now 40% off. Claim yours before supplies run out.</p>
+                        <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 10px;">1 day ago</div>
+                    </div>
+                </div>
+                <div class="notif-item">
+                    <div class="notif-icon" style="background: rgba(0, 255, 115, 0.2); color: var(--emerald-green);"><i
+                            class="fa-solid fa-shield-halved"></i></div>
+                    <div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Security Check</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">A new login was detected from Mars
+                            Colony. If this was you, you can safely ignore this.</p>
+                        <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 10px;">3 days ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

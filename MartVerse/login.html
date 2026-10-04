@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2564&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .auth-layout::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.85);
+            /* Dark overlay */
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .auth-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 45px 15px 20px;
+            /* Space for icon */
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            font-family: var(--font-main);
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 15px rgba(15, 240, 252, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .auth-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-social {
+            flex: 1;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-social:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-layout">
+        <div class="auth-card glass-card">
+            <div class="auth-title">
+                <a href="index.html" class="nav-logo text-gradient"
+                    style="font-size: 2.2rem; display: block; margin-bottom: 10px;">MartVerse</a>
+                <p style="color: var(--text-secondary);">Welcome back to the universe</p>
+                <p id="auth-notif" style="display: none; margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="email" id="email" class="form-control" placeholder="Email Address" required>
+                    <i class="fa-regular fa-envelope input-icon" style="cursor: default;"></i>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" class="form-control" placeholder="Password" required>
+                    <i class="fa-regular fa-eye input-icon toggle-pwd" data-target="password"></i>
+                </div>
+
+                <div class="auth-options">
+                    <label
+                        style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);">
+                        <input type="checkbox"> Remember Me
+                    </label>
+                    <a href="forgot-password.html" style="color: var(--electric-blue);">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; border-radius: 12px; padding: 15px;">Authenticate</button>
+            </form>
+
+            <div style="text-align: center; margin: 25px 0; color: var(--text-muted); position: relative;">
+                <span style="background: var(--bg-panel); padding: 0 10px; position: relative; z-index: 1;">OR</span>
+                <div
+                    style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--glass-border);">
+                </div>
+            </div>
+
+            <div class="social-login">
+                <button class="btn-social"><img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" width="20"
+                        alt="G"> Google</button>
+                <button class="btn-social"><img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" width="20"
+                        alt="Apple" style="filter: invert(1);"> Apple</button>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; color: var(--text-secondary);">
+                Don't have a neural link? <a href="register.html"
+                    style="color: var(--neon-purple); font-weight: 600;">Register Now</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

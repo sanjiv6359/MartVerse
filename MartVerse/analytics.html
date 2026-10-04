@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | Admin | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .admin-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .admin-link {
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .admin-link:hover,
+        .admin-link.active {
+            background: linear-gradient(90deg, rgba(15, 240, 252, 0.1), transparent);
+            color: var(--electric-blue);
+            border-left: 3px solid var(--electric-blue);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .chart-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar glass">
+            <h2 class="nav-logo text-gradient" style="text-align: center;">MARTVERSE</h2>
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+                <a href="manage-products.html" class="admin-link"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
+                <a href="manage-orders.html" class="admin-link"><i class="fa-solid fa-cart-flatbed"></i> Orders</a>
+                <a href="manage-users.html" class="admin-link"><i class="fa-solid fa-users"></i> Users</a>
+                <a href="analytics.html" class="admin-link active"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h1 class="heading-2">System Analytics</h1>
+                <select
+                    style="background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: #fff; padding: 10px; border-radius: 8px;">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                    <option>This Year</option>
+                </select>
+            </div>
+
+            <div class="charts-grid">
+                <!-- Data Transfer Matrix (Bar Chart) -->
+                <div class="chart-box">
+                    <h3 class="heading-3" style="margin-bottom: 25px;">User Growth Matrix</h3>
+                    <canvas id="barChart" width="500" height="300"
+                        style="width: 100%; max-height: 300px; display: block;"></canvas>
+                </div>
+
+                <!-- Category Spread (Doughnut/Circle outline proxy) -->
+                <div class="chart-box">
+                    <h3 class="heading-3" style="margin-bottom: 25px;">Category Popularity</h3>
+                    <div style="display: flex; align-items: center; justify-content: center; height: 300px;">
+                        <canvas id="pieChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Vanilla JS Additional Charts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Bar Chart
+            const barCvs = document.getElementById('barChart');
+            const bCtx = barCvs.getContext('2d');
+            fixRes(barCvs, bCtx);
+
+            const bData = [50, 80, 120, 150, 170, 210, 260];
+            const max = Math.max(...bData);
+            const w = barCvs.width / window.devicePixelRatio;
+            const h = barCvs.height / window.devicePixelRatio;
+            const pad = 40;
+            const barW = (w - pad * 2) / bData.length - 10;
+
+            bData.forEach((val, i) => {
+                const x = pad + (i * (barW + 10));
+                const barH = (val / max) * (h - pad * 2);
+                const y = h - pad - barH;
+
+                bCtx.fillStyle = '#b400ff';
+                bCtx.fillRect(x, y, barW, barH);
+            });
+            bCtx.strokeStyle = '#fff';
+            bCtx.beginPath(); bCtx.moveTo(pad, h - pad); bCtx.lineTo(w - pad, h - pad); bCtx.stroke();
+
+
+            // Pie Chart Mock
+            const pieCvs = document.getElementById('pieChart');
+            const pCtx = pieCvs.getContext('2d');
+            fixRes(pieCvs, pCtx);
+
+            const centerX = pieCvs.width / window.devicePixelRatio / 2;
+            const centerY = pieCvs.height / window.devicePixelRatio / 2;
+            const radius = 100;
+
+            const angles = [
+                { start: 0, end: Math.PI * 0.8, color: '#0ff0fc' },
+                { start: Math.PI * 0.8, end: Math.PI * 1.5, color: '#b400ff' },
+                { start: Math.PI * 1.5, end: Math.PI * 1.9, color: '#00ff73' },
+                { start: Math.PI * 1.9, end: Math.PI * 2, color: '#ff00c8' }
+            ];
+
+            pCtx.lineWidth = 40;
+            angles.forEach(a => {
+                pCtx.beginPath();
+                pCtx.strokeStyle = a.color;
+                pCtx.arc(centerX, centerY, radius, a.start, a.end);
+                pCtx.stroke();
+            });
+
+            // Helper
+            function fixRes(canvas, ctx) {
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * window.devicePixelRatio;
+                canvas.height = rect.height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+        });
+    </script>
+</body>
+
+</html>

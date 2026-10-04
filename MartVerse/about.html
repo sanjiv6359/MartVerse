@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .mission-glass {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--electric-blue);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <!-- navbar same as others -->
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo text-gradient">MartVerse</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="products.html">Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="about-hero">
+            <h1 class="heading-1">Pioneering The <span class="text-gradient">Next Era</span></h1>
+            <p style="color: var(--text-secondary); margin-top: 20px; font-size: 1.2rem;">We are a collective of
+                visionaries building the ultimate 3D shopping universe.</p>
+        </section>
+
+        <section class="glass-card mission-glass">
+            <h2 class="heading-2" style="margin-bottom: 20px; color: var(--electric-blue);">Our Mission</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
+                MartVerse is not just an e-commerce platform. It is a portal to discovering the cosmos of premium goods.
+                By combining advanced glassmorphism aesthetics, neon visual dimensions, and frictionless multi-step
+                checkouts, we ensure every transaction is an experience rather than a chore.
+            </p>
+        </section>
+
+        <section class="features-grid">
+            <div class="glass-card flex-column align-center" style="text-align: center;">
+                <i class="fa-solid fa-truck-fast feature-icon"></i>
+                <h3 class="heading-3">Light-speed Delivery</h3>
+                <p style="color: var(--text-secondary); margin-top: 15px;">Automated logistical drones deliver your
+                    premium products across continents.</p>
+            </div>
+            <div class="glass-card flex-column align-center" style="text-align: center;">
+                <i class="fa-solid fa-shield-halved feature-icon" style="color: var(--neon-purple);"></i>
+                <h3 class="heading-3">Quantum Security</h3>
+                <p style="color: var(--text-secondary); margin-top: 15px;">Your data is guarded by military-grade
+                    encryption in decentralised vaults.</p>
+            </div>
+            <div class="glass-card flex-column align-center" style="text-align: center;">
+                <i class="fa-solid fa-headset feature-icon" style="color: var(--emerald-green);"></i>
+                <h3 class="heading-3">AI Support</h3>
+                <p style="color: var(--text-secondary); margin-top: 15px;">24/7 intelligent concierge services ensure
+                    you are never left waiting.</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

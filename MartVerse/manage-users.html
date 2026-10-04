@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users | Admin | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .admin-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .admin-link {
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .admin-link:hover,
+        .admin-link.active {
+            background: linear-gradient(90deg, rgba(15, 240, 252, 0.1), transparent);
+            color: var(--electric-blue);
+            border-left: 3px solid var(--electric-blue);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .data-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            vertical-align: middle;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            color: var(--electric-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar glass">
+            <h2 class="nav-logo text-gradient" style="text-align: center;">MARTVERSE</h2>
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+                <a href="manage-products.html" class="admin-link"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
+                <a href="manage-orders.html" class="admin-link"><i class="fa-solid fa-cart-flatbed"></i> Orders</a>
+                <a href="manage-users.html" class="admin-link active"><i class="fa-solid fa-users"></i> Users</a>
+                <a href="analytics.html" class="admin-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h1 class="heading-2">User Directory</h1>
+                <input type="text" placeholder="Search neural link IDs..."
+                    style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); padding: 10px 20px; border-radius: 8px; color: #fff; width: 300px;">
+            </div>
+
+            <div class="glass-card" style="padding: 0; overflow: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>User Profile</th>
+                            <th>Email Address</th>
+                            <th>Registration Date</th>
+                            <th>Account Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="display: flex; align-items: center; gap: 15px;">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100"
+                                    style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                                <div style="font-weight: 600;">Nova Pioneer #42</div>
+                            </td>
+                            <td>nova.pioneer@cyberearth.net</td>
+                            <td>Sep 12, 2125</td>
+                            <td><span style="color: var(--emerald-green);"><i class="fa-solid fa-shield-check"></i>
+                                    Verified</span></td>
+                            <td>
+                                <button class="action-btn" title="Ban"><i class="fa-solid fa-ban"></i></button>
+                                <button class="action-btn" style="color: var(--pink);" title="Delete"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="display: flex; align-items: center; gap: 15px;">
+                                <div
+                                    style="width: 40px; height: 40px; border-radius: 50%; background: var(--bg-panel); display: flex; align-items: center; justify-content: center;">
+                                    <i class="fa-solid fa-user"></i></div>
+                                <div style="font-weight: 600;">Dr. Alan Turing</div>
+                            </td>
+                            <td>alan@enigmacorp.com</td>
+                            <td>Jan 01, 2126</td>
+                            <td><span style="color: var(--orange);"><i class="fa-solid fa-triangle-exclamation"></i>
+                                    Unverified</span></td>
+                            <td>
+                                <button class="action-btn" title="Ban"><i class="fa-solid fa-ban"></i></button>
+                                <button class="action-btn" style="color: var(--pink);" title="Delete"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

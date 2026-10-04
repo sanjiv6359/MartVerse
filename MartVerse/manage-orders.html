@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders | Admin | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--bg-panel);
+            border-right: 1px solid var(--glass-border);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .admin-main {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+        }
+
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .admin-link {
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+        }
+
+        .admin-link:hover,
+        .admin-link.active {
+            background: linear-gradient(90deg, rgba(15, 240, 252, 0.1), transparent);
+            color: var(--electric-blue);
+            border-left: 3px solid var(--electric-blue);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .data-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            vertical-align: middle;
+        }
+
+        .status-select {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar glass">
+            <h2 class="nav-logo text-gradient" style="text-align: center;">MARTVERSE</h2>
+            <nav class="admin-nav">
+                <a href="admin-dashboard.html" class="admin-link"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+                <a href="manage-products.html" class="admin-link"><i class="fa-solid fa-boxes-stacked"></i> Products</a>
+                <a href="manage-orders.html" class="admin-link active"><i class="fa-solid fa-cart-flatbed"></i>
+                    Orders</a>
+                <a href="manage-users.html" class="admin-link"><i class="fa-solid fa-users"></i> Users</a>
+                <a href="analytics.html" class="admin-link"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                <h1 class="heading-2">System Orders</h1>
+            </div>
+
+            <div class="glass-card" style="padding: 0; overflow: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Dispatch Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-family: monospace; color: var(--electric-blue);">#ORD-9938XXV</td>
+                            <td>Nova Pioneer #42</td>
+                            <td>Oct 24, 2126</td>
+                            <td>$299.99</td>
+                            <td>
+                                <select class="status-select">
+                                    <option>Processing</option>
+                                    <option selected>In Transit</option>
+                                    <option>Delivered</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: monospace; color: var(--electric-blue);">#ORD-8821AB</td>
+                            <td>Dr. Alan Turing</td>
+                            <td>Oct 15, 2126</td>
+                            <td>$89.99</td>
+                            <td>
+                                <select class="status-select">
+                                    <option>Processing</option>
+                                    <option>In Transit</option>
+                                    <option selected>Delivered</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

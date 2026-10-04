@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | MartVerse</title>
+    <link rel="stylesheet" href="css/globals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2564&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .auth-layout::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.85);
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .auth-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            font-family: var(--font-main);
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 15px rgba(180, 0, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        /* Popup overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-card {
+            background: var(--bg-panel);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .popup-overlay.active .popup-card {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-layout">
+        <div class="auth-card glass-card">
+            <div class="auth-title">
+                <a href="index.html" class="nav-logo text-gradient"
+                    style="font-size: 2.2rem; display: block; margin-bottom: 10px;">MartVerse</a>
+                <p style="color: var(--text-secondary);">Create your intergalactic account</p>
+                <p id="auth-notif" style="display: none; margin-top: 10px; font-weight: 600;"></p>
+            </div>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <input type="text" id="fullname" class="form-control" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" class="form-control" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" class="form-control" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" class="form-control" placeholder="Password"
+                        style="padding-right: 45px;" required>
+                    <i class="fa-regular fa-eye input-icon toggle-pwd" data-target="password"></i>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirm-password" class="form-control" placeholder="Confirm Password"
+                        style="padding-right: 45px;" required>
+                    <i class="fa-regular fa-eye input-icon toggle-pwd" data-target="confirm-password"></i>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label
+                        style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.4;">
+                        <input type="checkbox" id="terms" style="margin-top: 3px;">
+                        <span>I agree to the Terms & Conditions and Privacy Policy of the MartVerse platform.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary"
+                    style="width: 100%; border-radius: 12px; padding: 15px; background: linear-gradient(45deg, var(--neon-purple), var(--pink));">Establish
+                    Uplink (Register)</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 30px; color: var(--text-secondary);">
+                Already registered? <a href="login.html" style="color: var(--electric-blue); font-weight: 600;">Login
+                    Here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="success-popup">
+        <div class="popup-card glass-card">
+            <i class="fa-solid fa-circle-check"
+                style="font-size: 4rem; color: var(--emerald-green); margin-bottom: 20px;"></i>
+            <h2 class="heading-2">Registration Successful!</h2>
+            <p style="color: var(--text-secondary); margin-top: 15px;">Your neural link has been
+                established.<br>Redirecting to login portal...</p>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>
